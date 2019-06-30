@@ -1,11 +1,11 @@
 FROM alpine:latest
 MAINTAINER Tyler Baker <forcedinductionz@gmail.com>
 
-ARG VERSION=v2.8.1
-ARG VERSION_MAJOR=v2.8
+ARG VERSION=v3.0.0
+ARG VERSION_MAJOR=v3.0.0
 ARG GLIBC_VERSION=2.28-r0
 
-ENV FILENAME swap-${VERSION_MAJOR}-cli-linux64.tar.gz
+ENV FILENAME swap-${VERSION_MAJOR}-cli-linux.tar.gz
 ENV DOWNLOAD_URL https://github.com/swap-dev/swap/releases/download/${VERSION}/${FILENAME}
 
 RUN apk update \
@@ -21,8 +21,8 @@ RUN apk update \
   && wget $DOWNLOAD_URL \
   && tar xvf $FILENAME \
   && mkdir /root/.swap \
-  && mv swap-${VERSION_MAJOR}-cli-linux64/* /usr/local/bin/ \
-  && rm -rf /swap-${VERSION_MAJOR}-cli-linux64/ \
+  && mv swap-${VERSION_MAJOR}-cli-linux/* /usr/local/bin/ \
+  && rm -rf /swap-${VERSION_MAJOR}-cli-linux/ \
   && rm -rf /$FILENAME \
   && apk del tar wget ca-certificates
 
